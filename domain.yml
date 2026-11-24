@@ -1,0 +1,55 @@
+version: "3.1"
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+  - aiuto
+  - apri
+  - bevi
+  - conferma
+  - gioca
+  - guarda
+  - info
+  - lascia
+  - nega
+  - prendi
+  - saluta
+  - usa
+  - vai
+  
+
+entities: 
+  - stanza
+  - oggetto
+  - personaggio
+  - direzione
+
+slots:
+  inventario:
+    type: list
+    initial_value: []
+    influence_conversation: false
+    mappings:
+      - type: custom
+
+responses:
+  utter_aiuto:
+    - text: "Prova aiuto"
+  utter_action_inizia_gioco:
+    - text: "Prova inizio gioco"
+  utter_action_vai:
+    - text: "Prova azione vai"
+  utter_action_interagisci:
+    - text: "Prova azione interagisci"
+  utter_action_lascia:
+    - text: "Prova azione lascia"
+
+actions:
+  - action_inizia_gioco
+  - action_vai
+  - action_interagisci
+  - action_prendi
+  - action_lascia
+  - action_info

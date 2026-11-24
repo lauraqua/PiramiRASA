@@ -1,0 +1,122 @@
+version: "3.1"
+
+nlu:
+- intent: saluta
+  examples: |
+    - ciao
+    - salve
+    - buongiorno
+    - ehi
+    - inizia
+    - iniziamo
+    - voglio giocare
+    - eccomi
+
+- intent: aiuto
+  examples: |
+    - aiuto
+    - help
+    - cosa posso fare?
+    - non ho capito i comandi
+    - mi serve una mano
+    - quali sono i comandi
+    - aiutami
+
+- intent: info
+  examples: |
+    - info
+    - guardati intorno
+    - osserva la [stanza](stanza)
+    - info [stanza](stanza)
+    - info [cassa](oggetto)
+    - info [porta](oggetto)
+    - esamina la [porta](oggetto)
+    - info [biglietto](oggetto)
+    - guarda il [biglietto](oggetto)
+    - esamina la [chiave](oggetto)
+    - info [vergine](oggetto)
+    - esamina il [mattone](oggetto)
+    - guarda la [leva blu](oggetto)
+    - info [corridoio](stanza)
+    - descrizione [biblioteca](stanza)
+    - cosa ho nello zaino?
+
+- intent: vai
+  examples: |
+    - vai a [nord](direzione)
+    - vado verso [sud](direzione)
+    - spostati a [est](direzione)
+    - cammina verso [ovest](direzione)
+    - [nord](direzione)
+    - [sud](direzione)
+    - [est](direzione)
+    - [ovest](direzione)
+    - torna nella [stanza della vergine](stanza)
+    - vai dal [mercante](personaggio)
+    - torna all'[ingresso](stanza)
+    - entra nel [corridoio](stanza)
+
+- intent: interagisci
+  examples: |
+    - tira la [leva blu](oggetto)
+    - tiro la [leva rossa](oggetto)
+    - aziona la [leva gialla](oggetto)
+    - apri la [cassa](oggetto)
+    - apri la [cassa](oggetto) con la [chiave](oggetto)
+    - leggi il [biglietto](oggetto)
+    - apri la [porta](oggetto)
+    - lancia il [mattone](oggetto) sulla [porta](oggetto)
+    - usa il [mattone](oggetto)
+    - entra nella [vergine](oggetto)
+    - entra nel [sarcofago](oggetto)
+    - parla con il [mercante](personaggio)
+    - parlo con [NickSenzaTesta](personaggio)
+    - guarda sul tavolo del [mercante](personaggio)
+    - compra la [scala](oggetto)
+    - voglio comprare la [pozione](oggetto)
+
+- intent: prendi
+  examples: |
+    - prendi il [mattone](oggetto)
+    - prendi la [chiave](oggetto)
+    - raccolgo la [chiave](oggetto)
+    - prendi il [biglietto](oggetto)
+    - raccogli il [biglietto](oggetto)
+    - metti nello zaino il [papiro](oggetto)
+    - prendo il [rubino](oggetto)
+    - afferra la [scala](oggetto)
+    - raccogli l'[ampolla](oggetto)
+
+- intent: lascia
+  examples: |
+    - lascia il [mattone](oggetto)
+    - lascia la [chiave](oggetto)
+    - butta il [biglietto](oggetto)
+    - butta il [libro](oggetto)
+    - posa la [scala](oggetto)
+    - togli dall'inventario il [papiro](oggetto)
+    - getta via il [mattone](oggetto)
+    - lascia giù la [chiave](oggetto)
+
+- intent: conferma
+  examples: |
+    - sì
+    - si
+    - certo
+    - esatto
+    - va bene
+    - ok
+    - confermo
+    - assolutamente sì
+    - ho capito
+
+- intent: nega
+  examples: |
+    - no
+    - assolutamente no
+    - non voglio
+    - lascia stare
+    - annulla
+    - non ho capito
+    - mai
+    - neanche per sogno

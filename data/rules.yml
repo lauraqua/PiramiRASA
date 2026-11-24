@@ -1,0 +1,38 @@
+version: "3.1"
+
+rules:
+
+- rule: Inizia il gioco quando l'utente saluta
+  steps:
+  - intent: saluta
+  - action: utter_action_inizia_gioco
+
+- rule: Mostra l'aiuto
+  steps:
+  - intent: aiuto
+  - action: utter_aiuto
+
+- rule: Mostra info o inventario
+  steps:
+  - intent: info
+  - action: action_info
+
+- rule: Spostamento
+  steps:
+  - intent: vai
+  - action: utter_action_vai
+
+- rule: Interazione
+  steps:
+  - intent: interagisci
+  - action: utter_action_interagisci
+
+- rule: Raccogli oggetto
+  steps:
+  - intent: prendi
+  - action: action_prendi
+
+- rule: Lascia oggetto
+  steps:
+  - intent: lascia
+  - action: utter_action_lascia

@@ -6,15 +6,17 @@ session_config:
 
 intents:
   - aiuto
-  - apri
-  - bevi
+  #- apri
+  #- bevi
   - conferma
-  - gioca
-  - guarda
+  #- gioca
+  #- guarda
   - info
+  - interagisci
   - lascia
   - nega
-  - prendi
+  #- parla
+  #- prendi
   - saluta
   - usa
   - vai

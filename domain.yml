@@ -16,11 +16,11 @@ intents:
   - lascia
   - nega
   #- parla
-  #- prendi
+  - prendi
   - saluta
-  - usa
+  #- usa
   - vai
-  
+  - chi_sono
 
 entities: 
   - stanza
@@ -38,15 +38,13 @@ slots:
 
 responses:
   utter_aiuto:
-    - text: "Prova aiuto"
+    - text: "Puoi esplorare (vai), guardarti intorno o esaminare qualcosa (info), raccogliere (prendi), lasciare (lascia) o interagire con oggetti e personaggi."
   utter_action_inizia_gioco:
-    - text: "Prova inizio gioco"
-  utter_action_vai:
-    - text: "Prova azione vai"
-  utter_action_interagisci:
-    - text: "Prova azione interagisci"
-  utter_action_lascia:
-    - text: "Prova azione lascia"
+    - image: https://imgur.com/a/Te01NnW
+      text: "Ciao! Questo è PiramiRASA e io sarò la tua guida."
+  utter_chi_sono:
+    - text: "Sei il ladro più ricercato d'Egitto. Sfuggito per un soffio al cacciatore di taglie Cassidy al Cairo, ti sei calato in una botola nascosta nella sabbia ed eccoti intrappolato qui dentro."
+   
 
 actions:
   - action_inizia_gioco

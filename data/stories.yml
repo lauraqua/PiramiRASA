@@ -5,13 +5,13 @@ stories:
 - story: Conferma azione
   steps:
   - intent: interagisci
-  - action: utter_action_interagisci
+  - action: action_interagisci
   - intent: conferma
-  - action: utter_action_interagisci
+  - action: action_interagisci
 
 - story: Annulla azione
   steps:
   - intent: interagisci
-  - action: utter_action_interagisci
+  - action: action_interagisci
   - intent: nega
   - action: action_info

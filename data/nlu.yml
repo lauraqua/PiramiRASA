@@ -12,6 +12,15 @@ nlu:
     - voglio giocare
     - eccomi
 
+- intent: chi_sono
+  examples: |
+    - chi sono?
+    - chi sono io?
+    - che ci faccio qui?
+    - qual è la mia storia?
+    - perché sono qui?
+    - chi interpreto?
+
 - intent: aiuto
   examples: |
     - aiuto
@@ -40,6 +49,9 @@ nlu:
     - info [corridoio](stanza)
     - descrizione [biblioteca](stanza)
     - cosa ho nello zaino?
+    - dove sono?
+    - dove mi trovo?
+    - che posto è questo?
 
 - intent: vai
   examples: |

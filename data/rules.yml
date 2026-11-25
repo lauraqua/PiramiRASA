@@ -2,6 +2,11 @@ version: "3.1"
 
 rules:
 
+- rule: Avvia il gioco con /start di Telegram
+  steps:
+  - intent: start
+  - action: utter_action_inizia_gioco
+
 - rule: Inizia il gioco quando l'utente saluta
   steps:
   - intent: saluta
@@ -12,6 +17,11 @@ rules:
   - intent: aiuto
   - action: utter_aiuto
 
+- rule: Rispondi a chi sono
+  steps:
+  - intent: chi_sono
+  - action: utter_chi_sono
+
 - rule: Mostra info o inventario
   steps:
   - intent: info
@@ -20,12 +30,12 @@ rules:
 - rule: Spostamento
   steps:
   - intent: vai
-  - action: utter_action_vai
+  - action: action_vai
 
 - rule: Interazione
   steps:
   - intent: interagisci
-  - action: utter_action_interagisci
+  - action: action_interagisci
 
 - rule: Raccogli oggetto
   steps:
@@ -35,4 +45,4 @@ rules:
 - rule: Lascia oggetto
   steps:
   - intent: lascia
-  - action: utter_action_lascia
+  - action: action_lascia

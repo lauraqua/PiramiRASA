@@ -2,6 +2,7 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.events import SlotSet
 from rasa_sdk.executor import CollectingDispatcher
+import json
 
 info_descriptions = {
     "stanza": "Ti trovi in un'enorme stanza, praticamente vuota se non per una chiave a terra e una cassa. Verso sud vedi una porta.",
@@ -27,6 +28,17 @@ INTERAZIONI_DOPPIE = {
 }
 
 
+class GameState:
+    def __init__(self, dictionary = {}):
+        self.inventario = []
+
+        for k, v in dictionary.items():
+            setattr(self, k, v)
+
+    def toJSON(self):
+        return json.dumps(self, default=lambda o: o.__dict__)
+
+
 class ActionInfo(Action):
     def name(self) -> Text:
         return "action_info"
@@ -34,6 +46,9 @@ class ActionInfo(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        game_state = GameState(json.loads(tracker.get_slot("game_state")))
+        inventario = game_state.inventario
 
         entities = tracker.latest_message.get("entities", [])
         spoken = False
@@ -49,12 +64,12 @@ class ActionInfo(Action):
                     spoken = True
 
         if not spoken:
-            inventario = tracker.get_slot("inventario") or []
             zaino = ", ".join(inventario) if inventario else "vuoto"
             descrizione_stanza = info_descriptions["stanza"]
             dispatcher.utter_message(text=f"{descrizione_stanza} \nZaino attuale: {zaino}")
 
         return []
+
 
 class ActionPrendi(Action):
     def name(self) -> Text:
@@ -63,8 +78,10 @@ class ActionPrendi(Action):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        game_state = GameState(json.loads(tracker.get_slot("game_state")))
+        inventario = game_state.inventario
 
-        inventario = list(tracker.get_slot("inventario") or [])
         entities = tracker.latest_message.get("entities", [])
         raccolto = False
 
@@ -83,11 +100,12 @@ class ActionPrendi(Action):
                     raccolto = True
 
         if raccolto:
-            return [SlotSet("inventario", inventario)]
+            return [SlotSet("game_state", game_state.toJSON())]
 
         dispatcher.utter_message(text="Sicuro di aver scritto correttamente l'oggetto da prendere?")
-        return []
-    
+        return [SlotSet("game_state", game_state.toJSON())]
+
+
 class ActionInteragisci(Action):
     def name(self) -> Text:
         return "action_interagisci"
@@ -96,7 +114,9 @@ class ActionInteragisci(Action):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
-        inventario = tracker.get_slot("inventario") or []
+        game_state = GameState(json.loads(tracker.get_slot("game_state")))
+        inventario = game_state.inventario
+
         entities = [
             e["value"].lower().strip()
             for e in tracker.latest_message.get("entities", [])

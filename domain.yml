@@ -29,12 +29,11 @@ entities:
   - direzione
 
 slots:
-  inventario:
-    type: list
-    initial_value: []
-    influence_conversation: false
+  game_state:
+    type: any # GameState
     mappings:
       - type: custom
+    initial_value: '{}'
 
 responses:
   utter_aiuto:
